@@ -1,10 +1,8 @@
 import spacy
 
-text = 'Ich habe gerade Frau Dr. Meier getroffen. Das Buch erscheint in dritter Aufl. Ich mag z. B. Enten.'
+nlp = spacy.load("en_core_web_sm")
+doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
 
-nlp = spacy.load('de_core_news_sm')      # deutsches Modell ladenuss installiert sein)
-doc = nlp(text)
-
-for sentence in doc.sents:
-    tokens = [i for i in sentence]
-    print(tokens)
+for token in doc:
+    print(token.text, token.lemma_, token.pos_, token.tag_, token.dep_,
+            token.shape_, token.is_alpha, token.is_stop)
